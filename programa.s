@@ -8,11 +8,7 @@ main:
 	stmfd sp!, {lr}	/* SP = R13 link register */
 	/* valor1 */
 	
-	ldr r2, =num1
-	ldr r2, [r2]
-	ldr r3, = num2
-	ldr r3, [r3]
-	bl rutina
+	
 	
 	
 fin:
