@@ -23,7 +23,8 @@ main:
 	bl printf
 	
 	/*compara para la opcione*/
-	/*ldr r10, =opcion
+	ldr r10, =opcion
+	ldrb r10, [r10]
 	
 	cmp r10, #'+'
 	beq sumo
@@ -45,7 +46,7 @@ multip:
 	ldr r1, =mul
 	ldr r0, =entradaS
 	bl printf
-	b fin*/
+	b fin
 	
 	/* salida correcta */
 	fin:
@@ -61,8 +62,8 @@ multip:
 .data
 .align 2
 menu:			.asciz "Eliga una de estas opciones:\nIngrese '+' para Suma\nIngrese '*' para Multiplicación\nIngrese 'M' para Módulo (devolver el residuo en formato int de una división )\nIngrese 'P' para Potencia de un número (primer número ingresado es la base, segundo la potencia)\nIngrese '=' para Muestra el resultado almacenado\nIngrese 'q' para Mostrar mensaje de despedida y salir al sistema operativo\n"
-entradaS: 		.asciz " %s \n"
-entradaC:		.asciz " %c \n"
+entradaS: 		.asciz " %s"
+entradaC:		.asciz " %c"
 opcion: 		.asciz " "
 suma:			.asciz "Tu opcion es suma\n"
 mul:			.asciz "Tu opcion es multi\n"
