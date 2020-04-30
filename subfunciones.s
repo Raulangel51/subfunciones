@@ -1,3 +1,6 @@
+
+.text
+.align 2
 /*Sub rutina para realizar la suma de dos numeros
 	r0 primer numero a sumar
 	r1 segundo numero a sumar
@@ -32,7 +35,7 @@ modulo:
 	r1 es la potencia
 	r2 es el contador
 	en r0 se almacena el resultado*/
-.gloabl potencia
+.global potencia
 potencia:
 	and r3, #0
 	mov r3, #1
