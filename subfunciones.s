@@ -26,6 +26,14 @@ multiplicacion:
 	el residuo se regresa en r0*/
 .global modulo
 modulo:
+	modu:
+		cmp r0, r1
+		bgt fin
+		sub r1,r0
+		add r2,#1
+		b modu
+	fin:
+		mov pc, lr
 
 
 	mov pc,lr
