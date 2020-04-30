@@ -214,7 +214,7 @@ que:
 	
 	@@ r0, r3 <- 0 como sennal de no error al sistema operativo
 	mov	r3, #0
-	mov	r0, r3
+	mov	r0, #0
 
 	@ colocar registro de enlace para desactivar la pila y retorna al SO
 	ldmfd	sp!, {lr}
