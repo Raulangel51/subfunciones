@@ -45,6 +45,15 @@ main:
 	beq que
 	bne main
 	
+	/* salida correcta */
+fin:
+	@@ r0, r3 <- 0 como sennal de no error al sistema operativo
+	mov	r3, #0
+	mov	r0, r3
+
+	@ colocar registro de enlace para desactivar la pila y retorna al SO
+	ldmfd	sp!, {lr}
+	bx	lr
 	
 	
 sumo:
@@ -161,6 +170,8 @@ igual:
 	ldr r1, [r1]
 	ldr r0, =entradaD
 	bl printf
+	
+	b main
 
 
 que:
@@ -168,12 +179,6 @@ que:
 	ldr r0, =entradaS
 	bl printf
 	
-	b fin
-	
-
-	
-	/* salida correcta */
-fin:
 	@@ r0, r3 <- 0 como sennal de no error al sistema operativo
 	mov	r3, #0
 	mov	r0, r3
