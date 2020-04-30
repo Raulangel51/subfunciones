@@ -34,15 +34,18 @@ modulo:
 	r0 es la base 
 	r1 es la potencia
 	r2 es el contador
+	r3 es la nueva base
 	en r0 se almacena el resultado*/
 .global potencia
 potencia:
+	and r2, #0
+	mov r2, #1
 	and r3, #0
-	mov r3, #1
+	mov r3, r0
 	ciclo:
-		mul r0,r0,r0
-		add r3, #1
-		cmp r3,r2
+		mul r0,r0,r3
+		add r2, #1
+		cmp r2,r1
 		bne ciclo
 	mov pc, lr
 	
