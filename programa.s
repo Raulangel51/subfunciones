@@ -68,6 +68,9 @@ sumo:
 	
 	bl suma
 	
+	ldr r8, =respuesta
+	str r0, [r8]
+	
 	mov r1, r0
 	ldr r0, =entradaD
 	bl printf
@@ -93,7 +96,7 @@ multip:
 /*variables*/
 .data
 .align 2
-menu:			.asciz "Eliga una de estas opciones:\nIngrese '+' para Suma\nIngrese '*' para Multiplicación\nIngrese 'M' para Módulo (devolver el residuo en formato int de una división )\nIngrese 'P' para Potencia de un número (primer número ingresado es la base, segundo la potencia)\nIngrese '=' para Muestra el resultado almacenado\nIngrese 'q' para Mostrar mensaje de despedida y salir al sistema operativo\n"
+menu:			.asciz "\nEliga una de estas opciones:\nIngrese '+' para Suma\nIngrese '*' para Multiplicación\nIngrese 'M' para Módulo (devolver el residuo en formato int de una división )\nIngrese 'P' para Potencia de un número (primer número ingresado es la base, segundo la potencia)\nIngrese '=' para Muestra el resultado almacenado\nIngrese 'q' para Mostrar mensaje de despedida y salir al sistema operativo\n"
 entradaS: 		.asciz " %s"
 entradaC:		.asciz " %c"
 entradaD:		.asciz " %d"
