@@ -43,18 +43,7 @@ main:
 	
 	cmp r10, #'q'
 	beq que
-	bne main
-	
-	/* salida correcta */
-fin:
-	@@ r0, r3 <- 0 como sennal de no error al sistema operativo
-	mov	r3, #0
-	mov	r0, r3
-
-	@ colocar registro de enlace para desactivar la pila y retorna al SO
-	ldmfd	sp!, {lr}
-	bx	lr
-	
+	bne salir	
 	
 sumo:
 /*prueba para ver si entraba*/
@@ -70,6 +59,8 @@ sumo:
 	ldr r0, =entradaD
 	ldr r1, =valor1
 	bl scanf
+
+	
 	
 	/*ingresa el valor a r1*/
 	ldr r1, =valor1
@@ -211,7 +202,8 @@ que:
 	ldr r1, =salida
 	ldr r0, =entradaS
 	bl printf
-	
+
+salir:
 	@@ r0, r3 <- 0 como sennal de no error al sistema operativo
 	mov	r3, #0
 	mov	r0, #0
@@ -236,6 +228,7 @@ p:				.asciz "Tu opcion es potencia\n"
 q:				.asciz "Tu opcion es salida\n"
 opciong: 		.asciz "Tu opcion fue: %s \n"
 respuesta:		.word 0
+errorM:                 .asciz "Error! se ha ingresado mal un caracter, porfavor vueva a intentar."
 salida: 		.asciz "Gracias por usar el progama, tenga buen dia."
 
 
