@@ -3,11 +3,9 @@
 .global main
 .type main,%function
 
-main:
-
-	stmfd sp!, {lr}	/* SP = R13 link register */
+stmfd sp!, {lr}	/* SP = R13 link register */
 	/* valor1 */
-	
+main:	
 	/*Bienvenida*/
 	ldr r0, =menu
 	bl printf
@@ -42,8 +40,7 @@ main:
 	beq igual
 	
 	cmp r10, #'q'
-	beq que
-	bne salir	
+	beq que	
 	
 sumo:
 /*prueba para ver si entraba*/
@@ -59,7 +56,10 @@ sumo:
 	ldr r0, =entradaD
 	ldr r1, =valor1
 	bl scanf
-
+	
+	@ compara y salta si r0 es 0 (error)
+	cmp r0,#0
+	beq Num_Mal
 	
 	
 	/*ingresa el valor a r1*/
@@ -79,7 +79,8 @@ sumo:
 	mov r1, r0
 	ldr r0, =entradaD
 	bl printf
-	
+	bl getchar @para que borre la informacion del buffer de teclado
+
 	b main
 	
 multip:
@@ -96,6 +97,12 @@ multip:
 	ldr r0, =entradaD
 	ldr r1, =valor1
 	bl scanf
+
+	@ compara y salta si r0 es 0 (error)
+	cmp r0,#0
+	beq Num_Mal
+	
+
 	
 	/*ingresa el valor a r1*/
 	ldr r1, =valor1
@@ -114,7 +121,8 @@ multip:
 	mov r1, r0
 	ldr r0, =entradaD
 	bl printf	
-	
+	bl getchar @para que borre la informacion del buffer de teclado
+
 	b main
 	
 mod:
@@ -131,6 +139,12 @@ mod:
 	ldr r0, =entradaD
 	ldr r1, =valor1
 	bl scanf
+
+	@ compara y salta si r0 es 0 (error)
+	cmp r0,#0
+	beq Num_Mal
+	
+
 	
 	/*ingresa el valor a r1*/
 	ldr r1, =valor1
@@ -149,7 +163,8 @@ mod:
 	mov r1, r0
 	ldr r0, =entradaD
 	bl printf	
-	
+	bl getchar @para que borre la informacion del buffer de teclado
+
 	b main
 
 
@@ -167,6 +182,12 @@ pot:
 	ldr r0, =entradaD
 	ldr r1, =valor1
 	bl scanf
+
+	@ compara y salta si r0 es 0 (error)
+	cmp r0,#0
+	beq Num_Mal
+	
+
 	
 	/*ingresa el valor a r1*/
 	ldr r1, =valor1
@@ -185,16 +206,22 @@ pot:
 	mov r1, r0
 	ldr r0, =entradaD
 	bl printf	
-	
+	bl getchar @para que borre la informacion del buffer de teclado
 	b main
 
+
+Num_Mal:
+	ldr r0,=mal
+	bl puts
+	bl getchar @para que borre la informacion del buffer de teclado
+	b main
 
 igual:
 	ldr r1, =respuesta
 	ldr r1, [r1]
 	ldr r0, =entradaD
 	bl printf
-	
+	bl getchar @para que borre la informacion del buffer de teclado
 	b main
 
 
@@ -202,12 +229,12 @@ que:
 	ldr r1, =salida
 	ldr r0, =entradaS
 	bl printf
+	b salir
 
 salir:
 	@@ r0, r3 <- 0 como sennal de no error al sistema operativo
 	mov	r3, #0
 	mov	r0, #0
-
 	@ colocar registro de enlace para desactivar la pila y retorna al SO
 	ldmfd	sp!, {lr}
 	bx	lr
@@ -219,6 +246,7 @@ menu:			.asciz "\nEliga una de estas opciones:\nIngrese '+' para Suma\nIngrese '
 entradaS: 		.asciz " %s"
 entradaC:		.asciz " %c"
 entradaD:		.asciz " %d"
+mal:	.asciz "Ingreso incorrecto. Por favor vuelva a intentar :(\n"
 opcion: 		.asciz " "
 su:				.asciz "Tu opcion es suma\n"
 valor:			.asciz "Ingrese un valor: "
@@ -228,8 +256,8 @@ p:				.asciz "Tu opcion es potencia\n"
 q:				.asciz "Tu opcion es salida\n"
 opciong: 		.asciz "Tu opcion fue: %s \n"
 respuesta:		.word 0
-errorM:                 .asciz "Error! se ha ingresado mal un caracter, porfavor vueva a intentar."
-salida: 		.asciz "Gracias por usar el progama, tenga buen dia."
+errorM:                 .asciz "Error! se ha ingresado mal un caracter, porfavor vueva a intentar.\n"
+salida: 		.asciz "Gracias por usar el progama, tenga buen dia.\n"
 
 
 
