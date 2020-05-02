@@ -3,7 +3,8 @@
 .global main
 .type main,%function
 
-stmfd sp!, {lr}	/* SP = R13 link register */
+iniciar:
+	stmfd sp!, {lr}	/* SP = R13 link register */
 	/* valor1 */
 main:	
 	/*Bienvenida*/
@@ -40,7 +41,7 @@ main:
 	beq igual
 	
 	cmp r10, #'q'
-	beq que	
+	beq salir	
 	
 sumo:
 /*prueba para ver si entraba*/
@@ -187,7 +188,6 @@ pot:
 	cmp r0,#0
 	beq Num_Mal
 	
-
 	
 	/*ingresa el valor a r1*/
 	ldr r1, =valor1
@@ -225,13 +225,11 @@ igual:
 	b main
 
 
-que:
+salir:
 	ldr r1, =salida
 	ldr r0, =entradaS
 	bl printf
-	b salir
-
-salir:
+	
 	@@ r0, r3 <- 0 como sennal de no error al sistema operativo
 	mov	r3, #0
 	mov	r0, #0
@@ -247,7 +245,6 @@ entradaS: 		.asciz " %s"
 entradaC:		.asciz " %c"
 entradaD:		.asciz " %d"
 mal:	.asciz "Ingreso incorrecto. Por favor vuelva a intentar :(\n"
-opcion: 		.asciz " "
 su:				.asciz "Tu opcion es suma\n"
 valor:			.asciz "Ingrese un valor: "
 valor1:			.word 0
@@ -256,8 +253,8 @@ p:				.asciz "Tu opcion es potencia\n"
 q:				.asciz "Tu opcion es salida\n"
 opciong: 		.asciz "Tu opcion fue: %s \n"
 respuesta:		.word 0
-errorM:                 .asciz "Error! se ha ingresado mal un caracter, porfavor vueva a intentar.\n"
 salida: 		.asciz "Gracias por usar el progama, tenga buen dia.\n"
+opcion: 		.asciz " "
 
 
 
