@@ -27,12 +27,13 @@ multiplicacion:
 .global modulo
 modulo:
 	modu:
-		cmp r0, r1
+		cmp r1, r0
 		bgt fin
-		sub r1,r0
+		sub r0,r1
 		add r2,#1
 		b modu
 	fin:
+		@ mov r0, r1
 		mov pc, lr
 
 
