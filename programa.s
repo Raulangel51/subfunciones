@@ -3,13 +3,14 @@
 .global main
 .type main,%function
 
-iniciar:
-	stmfd sp!, {lr}	/* SP = R13 link register */
+stmfd sp!, {lr}	/* SP = R13 link register */
 	/* valor1 */
 main:	
 	/*Bienvenida*/
 	ldr r0, =menu
 	bl printf
+	
+	mov r10, #0
 	
 	/*pide opcion*/
 	ldr r0,=entradaS
