@@ -1,4 +1,5 @@
-
+/*Sufunciones para hacer la suma, multiplicacion,
+modulo y potencia*/
 .text
 .align 2
 /*Sub rutina para realizar la suma de dos numeros

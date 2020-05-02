@@ -1,3 +1,9 @@
+/*
+Programa de realizacion de suma, multiplicacion,
+potencia y modulo de dos numeros.
+Raul Jimenez 19017
+Donaldo Garcia 19693
+Alejandra Guidiel 19232*/
 .text
 .align 2
 .global main
