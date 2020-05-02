@@ -247,11 +247,11 @@ salir:
 /*variables*/
 .data
 .align 2
-menu:			.asciz "\nEliga una de estas opciones:\nIngrese '+' para Suma\nIngrese '*' para Multiplicación\nIngrese 'M' para Módulo (devolver el residuo en formato int de una división )\nIngrese 'P' para Potencia de un número (primer número ingresado es la base, segundo la potencia)\nIngrese '=' para Muestra el resultado almacenado\nIngrese 'q' para Mostrar mensaje de despedida y salir al sistema operativo\n"
+menu:			.asciz "\nEliga una de estas opciones:\n\nIngrese '+' para Suma\nIngrese '*' para Multiplicación\nIngrese 'M' para Módulo (devolver el residuo en formato int de una división )\nIngrese 'P' para Potencia de un número (primer número ingresado es la base, segundo la potencia)\nIngrese '=' para Muestra el resultado almacenado\nIngrese 'q' para Mostrar mensaje de despedida y salir al sistema operativo\n"
 entradaS: 		.asciz " %s"
 entradaC:		.asciz " %c"
 entradaD:		.asciz " %d"
-mal:	.asciz "Ingreso incorrecto. Por favor vuelva a intentar :(\n"
+mal:	.asciz "\nIngreso incorrecto. Por favor vuelva a intentar :(\n"
 su:				.asciz "Tu opcion es suma\n"
 valor:			.asciz "Ingrese un valor: "
 valor1:			.word 0
@@ -260,7 +260,7 @@ p:				.asciz "Tu opcion es potencia\n"
 q:				.asciz "Tu opcion es salida\n"
 opciong: 		.asciz "Tu opcion fue: %s \n"
 respuesta:		.word 0
-salida: 		.asciz "Gracias por usar el progama, tenga buen dia.\n"
+salida: 		.asciz "Gracias por usar el programa, tenga buen dia.\n"
 opcion: 		.asciz " "
 
 
